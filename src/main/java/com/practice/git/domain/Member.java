@@ -14,6 +14,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(unique = true)
     private String phone;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
@@ -29,7 +30,7 @@ public class Member {
         this.modifiedAt = modifiedAt;
     }
 
-    static Member createMember(String name, String phone, LocalDateTime createdAt) {
+    public static Member createMember(String name, String phone, LocalDateTime createdAt) {
         return new Member(name, phone, createdAt, createdAt);
     }
 }
