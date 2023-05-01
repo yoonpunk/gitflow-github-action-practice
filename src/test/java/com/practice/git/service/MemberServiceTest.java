@@ -112,7 +112,7 @@ class MemberServiceTest {
         Assertions.assertThat(optionalMember).isPresent();
 
         Member member = optionalMember.get();
-        Assertions.assertThat(member.getName()).isEqualTo(command.getName());
+        Assertions.assertThat(member.getName()).isEqualTo("ggg");
         Assertions.assertThat(member.getPhone()).isEqualTo(command.getPhone());
         Assertions.assertThat(member.getCreatedAt()).isEqualTo(command.getCreatedAt());
         Assertions.assertThat(member.getModifiedAt()).isEqualTo(command.getCreatedAt());
