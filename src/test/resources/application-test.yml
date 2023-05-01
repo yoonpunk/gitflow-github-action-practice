@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gitflow-github-action-practice-test
+    name: github-action-practice-test
   h2:
     console:
       enabled: true

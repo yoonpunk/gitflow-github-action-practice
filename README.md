@@ -1,8 +1,7 @@
-# gitflow-github-action-practice
+# github-action-practice
 
 ## 프로젝트 소개
-이 프로젝트는 GitFlow와 Github Action을 연습하기 위한 프로젝트입니다.
-
+이 프로젝트는 Github Action과 git branch workflow를 연습하기 위한 프로젝트입니다.
 
 ## 릴리즈 노트
 v1.0.0 이 release 되었습니다.
