@@ -18,4 +18,9 @@ jobs:
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1.0.6
     - name: Gradle Test Action with Gradle Wrapper
-      run: ./gradlew test
+      run: ./gradlew --info test
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2.7.0
+      if: ${{ always() }}
+      with:
+        files: build/test-results/**/*.xml
