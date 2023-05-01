@@ -3,7 +3,10 @@ package com.practice.git.service;
 import com.practice.git.domain.Member;
 import com.practice.git.repository.MemberRepository;
 import com.practice.git.service.command.CreateMemberCommand;
+import com.practice.git.service.dto.SearchedMemberDto;
 import com.practice.git.service.exception.ResourceAlreadyExistException;
+import com.practice.git.service.exception.ResourceNotExistException;
+import com.practice.git.service.query.SearchMemberQuery;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +64,45 @@ class MemberServiceTest {
 
         // act & assert
         assertThrows(ResourceAlreadyExistException.class, () -> sut.createMember(command));
+    }
+
+    @Test
+    void testForSearchMemberWithExistMember() {
+
+        // arrange
+        Member expectedMember = Member.createMember("yys", "01012345678",
+                LocalDateTime.of(2023, 5, 1, 12, 0, 0, 0));
+
+        expectedMember = memberRepository.save(expectedMember);
+
+        SearchMemberQuery query = SearchMemberQuery.builder()
+                .phone(expectedMember.getPhone())
+                .build();
+
+        // act
+        SearchedMemberDto actualSearchedMemberDto = sut.searchMember(query);
+
+        // assert
+        assertSearchMember(actualSearchedMemberDto, expectedMember);
+    }
+
+    @Test
+    void testForSearchMemberWithNotExistMember() {
+
+        // arrange
+        SearchMemberQuery query = SearchMemberQuery.builder()
+                .phone("33333333333")
+                .build();
+
+        // act & assert
+        assertThrows(ResourceNotExistException.class, () -> sut.searchMember(query));
+    }
+
+    private void assertSearchMember(SearchedMemberDto actualSearchedMemberDto, Member expected) {
+
+        Assertions.assertThat(actualSearchedMemberDto.getName()).isEqualTo(expected.getName());
+        Assertions.assertThat(actualSearchedMemberDto.getPhone()).isEqualTo(expected.getPhone());
+
     }
 
     // assert for the created member.
