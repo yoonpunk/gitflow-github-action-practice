@@ -1,13 +1,16 @@
-name: Java CI with Gradle
+name: Build when a push or pull_request to main is made
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    types:
+      -closed
 
 jobs:
   build:
+    if: ${{ github.event_name == 'push' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
 
     steps:
