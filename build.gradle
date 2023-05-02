@@ -51,6 +51,7 @@ tasks.named('test') {
 tasks.named("bootRun") {
     systemProperty 'DB_IP', findProperty('DB_IP') ?: ''
     systemProperty 'DB_PORT', findProperty('DB_PORT') ?: ''
+    systemProperty 'DB_NAME', findProperty('DB_NAME') ?: ''
     systemProperty 'DB_USER', findProperty('DB_USER') ?: ''
     systemProperty 'DB_PW', findProperty('DB_PW') ?: ''
 }
