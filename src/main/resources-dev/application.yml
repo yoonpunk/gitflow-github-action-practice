@@ -1,6 +1,14 @@
+server:
+  port: 8081
 spring:
   application:
-    name: github-action-practice-test
+    name: github-action-practice
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    defer-datasource-initialization: false
   h2:
     console:
       enabled: true
@@ -12,9 +20,5 @@ spring:
     driver-class-name: org.h2.Driver
     username: gitdb
     password: gitdb123
-  jpa:
-    hibernate:
-      ddl-auto: create
-    generate-ddl: true
-    show-sql: true
-    defer-datasource-initialization: false
+
+

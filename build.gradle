@@ -18,16 +18,45 @@ repositories {
     mavenCentral()
 }
 
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
+println 'profile : ' + profile
+
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/resources", "src/main/resources-${profile}"
+        }
+    }
+}
+
+bootRun {
+    systemProperties = System.properties
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.named("bootRun") {
+    systemProperty 'DB_IP', findProperty('DB_IP') ?: ''
+    systemProperty 'DB_PORT', findProperty('DB_PORT') ?: ''
+    systemProperty 'DB_USER', findProperty('DB_USER') ?: ''
+    systemProperty 'DB_PW', findProperty('DB_PW') ?: ''
+}
+
+tasks {
+    processResources {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
 }
