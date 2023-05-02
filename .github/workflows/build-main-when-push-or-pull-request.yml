@@ -1,4 +1,4 @@
-name: Build when a push or pull_request to main is made
+name: Build when a push is made or pull_request to main is merged
 
 on:
   push:
