@@ -35,6 +35,9 @@ jobs:
       - name: Gradle Build Action with Gradle Wrapper
         run: ./gradlew build -Pprofile=prod
         shell: bash
+        
+      - run: echo pwd
+      - run: echo ls
 
       - name: Make zip file
         run: zip -r ./$GITHUB_SHA.zip ./build/libs/*.jar
