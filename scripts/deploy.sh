@@ -34,7 +34,8 @@ echo "> env variable DB_PORT=$DB_PORT" >> $DEPLOY_LOG_PATH
 echo "> env variable DB_USER=${DB_USER}" >> $DEPLOY_LOG_PATH
 echo "> env variable DB_PW=${DB_PW}" >> $DEPLOY_LOG_PATH
 
-nohup $JAVA_HOME/bin/java -jar -Dspring.profiles.active=prod $DEPLOY_JAR -DDB_IP=${DB_IP} -DDB_PORT=${DB_PORT} -DDB_NAME=${DB_NAME} -DDB_USER=${DB_USER} -DDB_PW=${DB_PORT} >nohup.out 2>&1 &
+echo $(${JAVA_HOME}/bin/java --version) >> $DEPLOY_LOG_PATH
+nohup ${JAVA_HOME}/bin/java -jar -Dspring.profiles.active=prod $DEPLOY_JAR -DDB_IP=${DB_IP} -DDB_PORT=${DB_PORT} -DDB_NAME=${DB_NAME} -DDB_USER=${DB_USER} -DDB_PW=${DB_PORT} >nohup.out 2>&1 &
 
 sleep 3
 
