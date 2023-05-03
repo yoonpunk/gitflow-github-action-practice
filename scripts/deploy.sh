@@ -6,8 +6,6 @@ DEPLOY_LOG_PATH="/home/ubuntu/deploy/$PROJECT_NAME/deploy.log"
 BUILD_JAR=$(ls $JAR_PATH)
 JAR_NAME=$(basename $BUILD_JAR)
 
-source ~/.bash_profile
-
 echo "===== deploy started : $(date +%c) =====" >> $DEPLOY_LOG_PATH
 
 echo "> build filename: $JAR_NAME" >> $DEPLOY_LOG_PATH
