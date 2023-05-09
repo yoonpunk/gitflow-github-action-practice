@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+source ~/.bash_profile 
+
 PROJECT_NAME="github-action-practice"
 JAR_PATH="/home/ubuntu/deploy/$PROJECT_NAME/build/libs/*.jar"
 DEPLOY_PATH="/home/ubuntu/deploy/$PROJECT_NAME/"
