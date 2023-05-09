@@ -30,9 +30,13 @@ fi
 
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
 echo "> deploy new jar $DEPLOY_JAR" >> $DEPLOY_LOG_PATH
-echo ">java home $(which java)" >> $DEPLOY_LOG_PATH
-echo ">java version $(java -version)" >> $DEPLOY_LOG_PATH
+echo ">java home ${JAVA_HOME}" >> $DEPLOY_LOG_PATH
+echo ">java version $(/usr/bin/java -version)" >> $DEPLOY_LOG_PATH
 echo ">DB_IP ${DB_IP}" >> $DEPLOY_LOG_PATH
+echo ">DB_PORT ${DB_PORT}" >> $DEPLOY_LOG_PATH
+echo ">DB_NAME ${DB_NAME}" >> $DEPLOY_LOG_PATH
+echo ">DB_USER ${DB_USER}" >> $DEPLOY_LOG_PATH
+echo ">DB_PORT ${DB_PORT}" >> $DEPLOY_LOG_PATH
 
 nohup java -jar -Dspring.profiles.active=prod $DEPLOY_JAR -DDB_IP=${DB_IP} -DDB_PORT=${DB_PORT} -DDB_NAME=${DB_NAME} -DDB_USER=${DB_USER} -DDB_PW=${DB_PORT}  &
 
