@@ -33,6 +33,8 @@ echo ">java version $(/usr/bin/java -version)" >> $DEPLOY_LOG_PATH
 
 nohup $(which java) -jar -Dspring.profiles.active=prod $DEPLOY_JAR -DDB_IP=${DB_IP} -DDB_PORT=${DB_PORT} -DDB_NAME=${DB_NAME} -DDB_USER=${DB_USER} -DDB_PW=${DB_PORT}  &
 
+nohup java -jar $DEPLOY_JAR &
+
 sleep 3
 
 echo "> deploy ended. : $(date +%c)" >> $DEPLOY_LOG_PATH
