@@ -9,7 +9,6 @@ DEPLOY_ERR_LOG_PATH="/home/ubuntu/deploy/$PROJECT_NAME/deploy_err.log"
 BUILD_JAR=$(ls $JAR_PATH)
 JAR_NAME=$(basename $BUILD_JAR)
 
-cd $JAR_PATH
 echo "===== deploy started : $(date +%c) =====" >> $DEPLOY_LOG_PATH
 
 echo "> build filename: $JAR_NAME" >> $DEPLOY_LOG_PATH
