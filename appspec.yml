@@ -6,7 +6,7 @@ files:
     overwrite: yes
 
 permissions:
-  - object: /home/ubuntu/deploy/github-action-practice
+  - object: /
     pattern: "**"
     owner: ubuntu
     group: ubuntu
