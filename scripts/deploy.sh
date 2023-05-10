@@ -31,6 +31,7 @@ fi
 
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
 echo "> deploy new jar $DEPLOY_JAR" >> $DEPLOY_LOG_PATH
+cd $DEPLOY_PATH
 echo ">pwd $(pwd)" >> $DEPLOY_LOG_PATH
 echo ">java home ${JAVA_HOME}" >> $DEPLOY_LOG_PATH
 echo ">java version $(/usr/bin/java -version)" >> $DEPLOY_LOG_PATH
